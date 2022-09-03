@@ -13,7 +13,7 @@
       state: started
     when: ansible_os_family == "Debian"
   - name: i want to install webserver on RedHat Server
-    apt:
+    yum:
       name: httpd
       state: present
     when: ansible_os_family == "RedHat"
