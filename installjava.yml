@@ -7,7 +7,7 @@
       name: openjdk-11-jdk
       state: present
      when: ansible_os_family == "Debian"
-   - name: Install java on Ubuntu
+   - name: Install java on RedHat
      yum:
       name: java-11-openjdk
       state: present
