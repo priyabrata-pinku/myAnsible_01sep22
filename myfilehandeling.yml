@@ -11,3 +11,7 @@
     copy:
       src: my2ndfile.txt
       dest: /home/pinku/myfolder
+  - name: copy a dynamic file
+    copy:
+      src: myindex.j2
+      dest: /var/www/html/index.html
