@@ -6,11 +6,14 @@
     apt: 
       name: tree
       state: present
+    when: ansible_os_family == "Debian"
   - name: i want to install wget
     apt: 
       name: wget
       state: present
+    when: ansible_os_family == "Debian"
   - name: i want to install webserver
     apt: 
       name: apache2
       state: present
+    when: ansible_os_family == "Debian"
