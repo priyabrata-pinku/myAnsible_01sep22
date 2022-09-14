@@ -8,7 +8,7 @@
       state: present
      when: ansible_os_family == "Debian"
    - name: Install java on Ubuntu
-     apt:
+     yum:
       name: java-11-openjdk
       state: present
      when: ansible_os_family == "RedHat"
