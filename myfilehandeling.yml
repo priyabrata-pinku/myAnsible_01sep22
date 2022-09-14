@@ -7,3 +7,7 @@
     file:
       path: /home/pinku/myfolder
       state: directory
+  - name: copy a file
+    copy:
+      src: my2ndfile.txt
+      dest: /home/pinku/myfolder
