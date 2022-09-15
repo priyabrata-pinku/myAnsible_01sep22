@@ -7,11 +7,17 @@
     file:
       path: /home/pinku/myfolder
       state: directory
-  - name: copy a file
+  - name: copy a file from master to node side
     copy:
       src: my2ndfile.txt
       dest: /home/pinku/myfolder
+  - name: i want to install apache2
+    apt:
+      name: apache2
+      state: present
   - name: copy a dynamic file
     copy:
       src: myindex.j2
       dest: /var/www/html/index.html
+   
+  
