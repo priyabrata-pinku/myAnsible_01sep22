@@ -3,4 +3,5 @@
 - include_tasks: apache2install.yml
 - include_tasks: ufw.yml
 - include_tasks: mariadb-mysql.yml
+- include_tasks: mysql_secure_installation.yml
 - include_tasks: installphp.yml

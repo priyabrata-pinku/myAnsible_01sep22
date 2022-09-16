@@ -16,6 +16,3 @@
   apt:
     name: mariadb-client
     state: present
-
-- name: Install "mysql" package
-  command: sudo mysql_secure_installation
