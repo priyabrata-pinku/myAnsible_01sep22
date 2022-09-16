@@ -10,8 +10,8 @@
       state: directory
   - name: copy a file from master to node side
     copy:
-      src: my2ndfile.txt
-      dest: /home/pinku/myfolder/my2ndfile
+      src: my2dfile.txt
+      dest: /home/ubuntu/my2ndfile
     notify: install apache2
   - name: download remote or internet file
     get_url:
