@@ -7,12 +7,12 @@
     name: mariadb-server
     state: present
 
-- name: start mariadb.service
-  systemd:
-    state: started
-    name: mariadb.service
-
 - name: Install "mariadb-client" package
   apt:
     name: mariadb-client
     state: present
+
+- name: start mariadb.service
+  systemd:
+    state: started
+    name: mariadb.service
