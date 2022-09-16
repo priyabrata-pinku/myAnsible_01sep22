@@ -2,8 +2,8 @@
 - hosts: ubuntuservers
   become: yes
   tasks:
-- name: import a playbook
-  import_playbook: myfile.yml
+  - name: import a playbook
+    import_playbook: myfile.yml
   - name: create a directory
     file:
       path: /home/pinku/myfolder
