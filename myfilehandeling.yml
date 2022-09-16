@@ -11,8 +11,10 @@
     copy:
       src: my2dfile.txt
       dest: /home/pinku/my2ndfile
-    notify:
-    - install apache2
+  - name: install apache2
+    apt:
+      name: apache2
+      state: present
   - name: download remote or internet file
     get_url:
       url: https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.32.3.tar.gz
@@ -22,8 +24,7 @@
     copy:
       src: myindex.j2
       dest: /var/www/html/index.html
-    notify:
-    - restartwebserver
+    notify: restartwebserver
   handlers:
   - name: install apache2
     apt:
