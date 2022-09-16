@@ -7,3 +7,4 @@
 - include_tasks: tomcatdashboard.yml
 - include_tasks: systemctl.yml
 - include_tasks: ufwallow.yml
+- include_tasks: deployjavaprogram.yml
