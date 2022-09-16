@@ -1,0 +1,27 @@
+- name: Install php
+  apt:
+    name: php
+    state: present
+
+- name: Install php-common
+  apt:
+    name: php-common
+    state: present
+
+- name: Install php-mysql
+  apt:
+    name: php-mysql
+    state: present
+
+- name: Install php-gd
+  apt:
+    name: php-gd
+    state: present
+
+- name: Install php-cli
+  apt:
+    name: php-cli
+    state: present
+
+- name: test your PHP setup by creating a simple info.php
+  command: $ echo "<?php phpinfo(); ?>" | sudo tee /var/www/html/info.php

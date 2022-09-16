@@ -1,0 +1,21 @@
+- name: Update repositories cache
+  apt:
+    update_cache: yes
+
+- name: Install "mariadb-server" package
+  apt:
+    name: mariadb-server
+    state: present
+
+- name: start mariadb.service
+  systemd:
+    state: started
+    name: mariadb.service
+
+- name: Install "mariadb-client" package
+  apt:
+    name: mariadb-client
+    state: present
+
+- name: Install "mysql" package
+  command: sudo mysql_secure_installation

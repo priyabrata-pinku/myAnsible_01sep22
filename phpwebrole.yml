@@ -1,0 +1,5 @@
+---
+- hosts: ubuntuservers
+  become: yes
+  roles:
+    - {role: phpwebrole, when: ansible_os_family == "Debian"}

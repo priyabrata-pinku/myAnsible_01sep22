@@ -1,2 +1,6 @@
 ---
 # tasks file for phpwebrole
+- include_tasks: apache2install.yml
+- include_tasks: ufw.yml
+- include_tasks: mariadb-mysql.yml
+- include_tasks: installphp.yml
