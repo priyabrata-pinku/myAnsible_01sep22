@@ -15,9 +15,13 @@
     apt:
       name: apache2
       state: present
+  - name: download remote or internet file
+    get_url:
+      url: https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.32.3.tar.gz
+      dest: /home/ubuntu/git-2.32.3.tar.gz
+      force_basic_auth: yes
   - name: copy a dynamic file
     copy:
       src: myindex.j2
       dest: /var/www/html/index.html
-   
   
