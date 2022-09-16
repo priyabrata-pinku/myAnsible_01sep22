@@ -1,8 +1,7 @@
-- file:
-    path: /etc/foo.conf
-    owner: tomcat
-    group: tomcat
+---
+- name: grant tomcat ownership
+  command: sudo chown -R tomcat:tomcat /opt/tomcat/
 
-- file:
-    path: /opt/tomcat/bin
-    mode: "u+x,g,o"
+
+- name: grant execute persmission on bin folder
+  command: sudo chmod -R u+x /opt/tomcat/bin
