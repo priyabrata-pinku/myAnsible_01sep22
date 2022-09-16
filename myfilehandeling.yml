@@ -35,4 +35,4 @@
       name: apache2
       state: restarted
   - name: include tasks
-    include_tasks: myfile.yml
+  - include_tasks: myfile.yml
