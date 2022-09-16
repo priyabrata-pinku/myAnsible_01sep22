@@ -2,6 +2,11 @@
 172.31.18.148
 172.31.22.34
 
+[ubuntuservers]
+172.31.18.148
+
+[redhatservers]
+
 [myapplicationservers]
 172.31.18.14
 172.31.22.3
