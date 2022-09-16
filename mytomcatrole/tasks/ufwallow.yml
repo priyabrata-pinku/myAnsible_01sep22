@@ -1,0 +1,3 @@
+- ufw:
+    rule: allow
+    port: 8080

@@ -1,0 +1,5 @@
+- sysctl:
+    state: started
+    daemon_reload: yes
+    name: tomcat
+    enabled: yes

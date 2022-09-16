@@ -1,0 +1,19 @@
+- name: Copy tomcat users file from master to node
+  copy:
+    src: /srv/tomcat-users.j2
+    dest: /opt/tomcat/conf/tomcat-users.xml
+
+- name: Copy tomcat context file from master to node
+  copy:
+    src: /srv/tomcat-context.j2
+    dest: /opt/tomcat/webapps/manager/META-INF/context.xml
+
+- name: Copy tomcat host context file from master to node
+  copy:
+    src: /srv/tomcat-hostcontext.j2
+    dest: /opt/tomcat/webapps/host-manager/META-INF/context.xml
+
+- name: Copy tomcat service file from master to node
+  copy:
+    src: /srv/tomcat-service.j2
+    dest: /etc/systemd/system/tomcat.service

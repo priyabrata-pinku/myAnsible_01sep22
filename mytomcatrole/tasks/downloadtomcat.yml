@@ -1,0 +1,15 @@
+- name: download apache tomcat for ubuntu
+  get_url:
+    url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.0.23/bin/apache-tomcat-10.0.23.tar.gz
+    dest: /home/pinku/apache-tomcat-10.0.23.tar.gz
+    force_basic_auth: yes
+
+- name: create a folder
+  file:
+    path: /opt/tomcat
+    state: directory
+
+- name: extract download file
+  unarchive:
+    src: /home/pinku/apache-tomcat-10.0.23.tar.gz
+    dest: /opt/tomcat
