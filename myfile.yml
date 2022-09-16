@@ -1,5 +1,5 @@
 ---
-- hosts: 172.31.18.148
+- hosts: ubuntuservers
   become: yes
   tasks:
   - name: create a file

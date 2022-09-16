@@ -3,7 +3,7 @@
   become: yes
   tasks:
   - name: Include task list in play
-    include: myfile.yaml
+    include: myfile.yml
   - name: create a directory
     file:
       path: /home/pinku/myfolder
