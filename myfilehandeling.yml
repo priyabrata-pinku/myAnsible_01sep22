@@ -2,7 +2,8 @@
 - hosts: 172.31.18.148
   become: yes
   tasks:
-  - include_tasks: myfile.yml
+  - name: include a task
+    ansible.builtin.include: myfile.yml
   - name: create a directory
     file:
       path: /home/pinku/myfolder
