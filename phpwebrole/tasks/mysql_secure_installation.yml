@@ -1,28 +1,47 @@
-- name: Adds Python MySQL support on Debian/Ubuntu
-  apt: pkg="python-mysqldb" state=present
-  when: ansible_os_family == 'Debian'
+---
 
-- name: Adds Python MySQL support on RedHat/CentOS
-  yum: name=MySQL-python state=present
-  when: ansible_os_family == 'RedHat'
+# create root .my.cnf config file
+- name: Add .my.cnf
+  template: src=my.cnf.j2 dest=/root/.my.cnf owner=root group=root mode=0600
 
-- name: Set the root password 
-  mysql_user: login_user=root login_password="{{ root_password }}" user=root password="{{ root_password }}"
+# Set root password
+# UPDATE mysql.user SET Password=PASSWORD('mysecret') WHERE User='root';
+# FLUSH PRIVILEGES;
 
-- name: Secure the root user for IPV6 localhost (::1)
-  mysql_user: login_user=root login_password="{{ root_password }}" user=root password="{{ root_password }}" host="::1"
+- name: Set root Password
+  mysql_user: login_password={{ mysql_root_password }} check_implicit_admin=yes name=root host={{ item }} password={{ mysql_root_password }} state=present 
+  with_items:
+    - localhost
+    - 127.0.0.1
+    - ::1
 
-- name: Secure the root user for IPV4 localhost (127.0.0.1)
-  mysql_user: login_user=root login_password="{{ root_password }}" user=root password="{{ root_password }}" host="127.0.0.1"
+- name: Reload privilege tables
+  command: 'mysql -ne "{{ item }}"'
+  with_items:
+    - FLUSH PRIVILEGES
+  changed_when: False
 
-- name: Secure the root user for localhost domain
-  mysql_user: login_user=root login_password="{{ root_password }}" user=root password="{{ root_password }}" host="localhost"
+- name: Remove anonymous users
+  command: 'mysql -ne "{{ item }}"'
+  with_items:
+    - DELETE FROM mysql.user WHERE User=''
+  changed_when: False
 
-- name: Secure the root user for server_hostname domain
-  mysql_user: login_user=root login_password="{{ root_password }}" user=root password="{{ root_password }}" host="{{ ansible_fqdn }}"
+- name: Disallow root login remotely
+  command: 'mysql -ne "{{ item }}"'
+  with_items:
+    - DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1')
+  changed_when: False
 
-- name: Deletes anonymous server user
-  mysql_user: login_user=root login_password="{{ root_password }}" user="" host_all=yes state=absent
+- name: Remove test database and access to it
+  command: 'mysql -ne "{{ item }}"'
+  with_items:
+    - DROP DATABASE IF EXISTS test
+    - DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%'
+  changed_when: False
 
-- name: Removes the test database
-  mysql_db: login_user=root login_password="{{ root_password }}" db=test state=absent
+- name: Reload privilege tables
+  command: 'mysql -ne "{{ item }}"'
+  with_items:
+    - FLUSH PRIVILEGES
+  changed_when: False

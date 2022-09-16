@@ -1,0 +1,13 @@
+- name: Update repositories cache
+  apt:
+    update_cache: yes
+
+- name: Install "mysql-server" package
+  apt:
+    name: mysql-server
+    state: present
+
+- name: start mysql.service
+  systemd:
+    state: started
+    name: mysql.service
