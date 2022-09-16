@@ -1,2 +1,2 @@
 - name: mysql_secure_installation
-  command: sudo mysql_secure_installation
+  command: sudo ansible-galaxy install | sudo ibrahimmohammad.mysql_secure_installation
