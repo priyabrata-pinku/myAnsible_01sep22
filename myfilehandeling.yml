@@ -2,6 +2,8 @@
 - hosts: 172.31.18.148
   become: yes
   tasks:
+  - name: Include task list in play
+    include: myfile.yml
   - name: create a directory
     file:
       path: /home/pinku/myfolder
