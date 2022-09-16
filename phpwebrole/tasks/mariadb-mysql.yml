@@ -9,7 +9,7 @@
 
 - name: start mariadb.service
   systemd:
-    state: restarted
+    state: started
     name: mariadb.service
 
 - name: Install "mariadb-client" package
