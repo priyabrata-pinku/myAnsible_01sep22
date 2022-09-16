@@ -1,3 +1,4 @@
+---
 - name: Copy tomcat users file from master to node
   copy:
     src: /srv/tomcat-users.j2
