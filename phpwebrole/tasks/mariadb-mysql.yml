@@ -1,7 +1,7 @@
 ---
 - name: Install "mariadb-server" package
   apt:
-    name: mariadb-server
+    name: mariadb-server-10.1
     state: present
 
 - name: Install "mariadb-client" package

@@ -7,3 +7,7 @@
     name: mysql-server
     state: present
 
+- name: start mysql.service
+  systemd:
+    state: started
+    name: mysql.service
