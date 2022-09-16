@@ -2,38 +2,30 @@
 - hosts: 172.31.18.148
   become: yes
   tasks:
-  - name: include a task
-    ansible.builtin.include: myfile.yml
-
   - name: create a directory
     file:
       path: /home/pinku/myfolder
       state: directory
-
   - name: copy a file from master to node side
     copy:
       src: my2dfile.txt
-      dest: /home/ubuntu/my2ndfile
+      dest: /home/pinku/my2ndfile
     notify: install apache2
-  
   - name: download remote or internet file
     get_url:
       url: https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.32.3.tar.gz
       dest: /home/pinku/git-2.32.3.tar.gz
       force_basic_auth: yes
-  
   - name: copy a dynamic file
     copy:
       src: myindex.j2
       dest: /var/www/html/index.html
     notify: restartwebserver
-  
   handlers:
   - name: install apache2
     apt:
       name: apache2
       state: present
-  
   - name: restartwebserver
     service:
       name: apache2
