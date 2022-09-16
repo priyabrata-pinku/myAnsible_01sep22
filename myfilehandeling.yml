@@ -2,7 +2,7 @@
 - hosts: 172.31.18.148
   become: yes
   tasks:
-  - include_tasks: myfilehandeling.yml
+  - include_tasks: myfile.yml
   - name: create a directory
     file:
       path: /home/pinku/myfolder
