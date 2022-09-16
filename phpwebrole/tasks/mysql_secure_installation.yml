@@ -1,33 +1,26 @@
----
-# Ansible mysql_secure_installation playbook
-- hosts: icinga:cacti
-
-  tasks: 
-  - name: delete anonymous MySQL server user for {{ ansible_hostname }}
-    mysql_user: user="" host="{{ ansible_hostname }}" state="absent"
-                login_user=root login_password={{ mysql_root_password }} check_implicit_admin=yes
+ - tasks: 
+    - name: delete anonymous MySQL server user for {{ ansible_hostname }}
+      mysql_user: user="" host="{{ ansible_hostname }}" state="absent"
+                  login_user=root login_password={{ mysql_root_password }} check_implicit_admin=yes
  
-  - name: delete anonymous MySQL server user for localhost
-    mysql_user: user="" state="absent"
-                login_user=root login_password={{ mysql_root_password }} check_implicit_admin=yes
+    - name: delete anonymous MySQL server user for localhost
+      mysql_user: user="" state="absent"
+                  login_user=root login_password={{ mysql_root_password }} check_implicit_admin=yes
  
-  - name: remove the MySQL test database
-    mysql_db: name=test state=absent
-              login_user=root login_password={{ mysql_root_password }}
-   
-   
-# 'localhost' needs to be the last item for idempotency, see
-# http://ansible.cc/docs/modules.html#mysql-user   
-  - name: Change root user password on first run
-    mysql_user: login_user=root
-                login_password={{ mysql_root_password }}
-                check_implicit_admin=yes
-                name=root
-                password={{ mysql_root_password }}
-                priv=*.*:ALL,GRANT
-                host={{ item }}
-    with_items:
-      - "{{ ansible_hostname }}"
-      - 127.0.0.1
-      - ::1
-      - localhost
+    - name: remove the MySQL test database
+      mysql_db: name=test state=absent
+                login_user=root login_password={{ mysql_root_password }}
+    
+    - name: Change root user password on first run
+      mysql_user: login_user=root
+                  login_password={{ mysql_root_password }}
+                  check_implicit_admin=yes
+                  name=root
+                  password={{ mysql_root_password }}
+                  priv=*.*:ALL,GRANT
+                  host={{ item }}
+      with_items:
+        - "{{ ansible_hostname }}"
+        - 127.0.0.1
+        - ::1
+        - localhost
