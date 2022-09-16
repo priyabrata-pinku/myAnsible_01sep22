@@ -2,7 +2,7 @@
 - hosts: ubuntuservers
   become: yes
   tasks:
-  - include_tasks: myfile.yml
+    notify: include tasks
   - name: create a directory
     file:
       path: /home/pinku/myfolder
@@ -34,3 +34,5 @@
     service:
       name: apache2
       state: restarted
+  - name: include tasks
+    include_tasks: myfile.yml
