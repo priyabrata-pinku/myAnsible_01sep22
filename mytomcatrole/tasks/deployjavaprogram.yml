@@ -1,0 +1,6 @@
+---
+- name: deploy java application on prod server
+  get_url:
+    url: https://get.jenkins.io/war-stable/2.361.1/jenkins.war
+    src: /opt/tomcat/webapps/
+    force_basic_auth: yes
