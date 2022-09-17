@@ -9,9 +9,9 @@
      image: ami-0d79a7b59b00b0d69
      wait: yes
      group: AWS_Security_Ohio
-     region: us-east-2
      count: 2
      vpc_subnet_id: subnet-00abeabf43477a68e
      assign_public_ip: yes
+     region: us-east-2
      instance_tags:
         Name: ansiblenodes
