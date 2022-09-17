@@ -11,7 +11,7 @@
      group: AWS_Security_Ohio
      region: us-east-2
      count: 2
-     vpc_subnet_id: subnet-02114fc4ff6d228dc
+     vpc_subnet_id: subnet-00abeabf43477a68e
      assign_public_ip: yes
      instance_tags:
         Name: ansiblenodes
