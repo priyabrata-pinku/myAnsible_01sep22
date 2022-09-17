@@ -1,11 +1,5 @@
 ---
 - name: deploy java application on prod server
-  get_url:
-    url: https://get.jenkins.io/war-stable/2.361.1/jenkins.war
-    dest: /opt/tomcat/webapps/
-    force_basic_auth: yes
-
-- name: deploy java application on prod server
   copy:
     src: templates/time-tracker-web-0.5.0-SNAPSHOT.war
     dest: /opt/tomcat/webapps/
