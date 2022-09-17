@@ -8,6 +8,7 @@
      instance_type: t2.micro
      image: ami-0d79a7b59b00b0d69
      wait: yes
+     group: AWS_Security_Ohio
      region: us-east-2
      count: 2
      vpc_subnet_id: subnet-02114fc4ff6d228dc
