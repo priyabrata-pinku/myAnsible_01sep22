@@ -1,0 +1,13 @@
+[ubuntu]
+172.31.16.88
+
+
+[localmachine]
+localhost
+
+[ubuntu.vars]
+webserver=apache2
+
+
+[localhost.vars]
+webserver=httpd

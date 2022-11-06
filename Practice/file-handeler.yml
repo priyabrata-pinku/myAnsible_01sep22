@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: want to create a file
+    file:
+      path: /myfile
+      state: touch
+      mode: u+rw,g-wx,o-rwx
+  - name: Download jenkins file and force basic auth
+    get_url:
+      url: https://get.jenkins.io/war-stable/2.361.3/jenkins.war
+      dest: /tmp/jenkins.war
+      force_basic_auth: yes

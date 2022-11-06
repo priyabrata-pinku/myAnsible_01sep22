@@ -9,7 +9,7 @@
       state: directory
   - name: copy a file from master to node side
     copy:
-      src: my2dfile.txt
+      src: my2ndfile.txt
       dest: /home/pinku/my2ndfile
   - name: install apache2
     apt:
@@ -25,11 +25,6 @@
       src: myindex.j2
       dest: /var/www/html/index.html
     notify: restartwebserver
-  handlers:
-  - name: install apache2
-    apt:
-      name: apache2
-      state: present
   - name: restartwebserver
     service:
       name: apache2
